@@ -1,8 +1,7 @@
 import QtQuick 2.9
 import QtQuick.Controls 2.2
 import QtQuick.Window 2.2
-
-import "logic.js" as gameLogic
+// import "logic.js" as gameLogic
 
 ApplicationWindow {
     id: root
@@ -15,15 +14,26 @@ ApplicationWindow {
 
     Image {
         id:background
+
+        height:  root.height
+        width:   root.width
+
         anchors.fill: parent
+
         source: "image/background.jpg"
     }
 
     Buttons
     {
         id: toolbar
+
         anchors.left: root.left
         anchors.top : root.top
+    }
 
+    Snake {
+        id: mySnake
+
+        anchors.centerIn: background
     }
 }

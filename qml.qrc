@@ -4,5 +4,7 @@
         <file>logic.js</file>
         <file>image/background.jpg</file>
         <file>Buttons.qml</file>
+        <file>Snake.qml</file>
+        <file>image/hed.png</file>
     </qresource>
 </RCC>
