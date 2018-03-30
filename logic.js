@@ -1,1 +1,3 @@
-var startGame = false
+var startGame
+var snake {}
+

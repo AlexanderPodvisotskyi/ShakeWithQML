@@ -14,12 +14,12 @@ ApplicationWindow {
 
 
     GameGround {
-     id: gameGround
+        id: gameGround
 
-     height: root.height
-     width: root.width
+        height: root.height
+        width: root.width
 
-     anchors.top: toolbar.bottom
+        anchors.top: toolbar.bottom
     }
 
     Buttons {
@@ -28,6 +28,13 @@ ApplicationWindow {
         anchors.left: root.left
         anchors.top : root.top
     }
+
+    Wall {
+
+        id:wall
+    }
+
+
 
     Snake {
         id: mySnake
