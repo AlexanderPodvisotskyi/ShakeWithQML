@@ -1,10 +1,11 @@
-<RCC>
+<RCC version="1.0">
     <qresource prefix="/">
         <file>main.qml</file>
         <file>logic.js</file>
         <file>image/background.jpg</file>
         <file>Buttons.qml</file>
         <file>Snake.qml</file>
-        <file>image/hed.png</file>
+        <file>image/hed.jpg</file>
+        <file>GameGround.qml</file>
     </qresource>
 </RCC>

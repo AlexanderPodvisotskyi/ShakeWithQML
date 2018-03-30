@@ -1,66 +1,51 @@
 import QtQuick 2.0
 
+
 Item {
     focus: true
 
-    property Rectangle next: null
-    property int prevX: 0
-    property int prevY: 0
+    property string dir: ""
 
     Keys.onPressed: {
 
         if(event.key === Qt.Key_Up){
             event.acceptable = true;
-            snake.y = (snake.y) - 40
+            dir = "UP"
         }
         if(event.key === Qt.Key_Down){
             event.acceptable = true;
-            snake.y = (snake.y) + 40
+            dir = "DOWN"
         }
         if(event.key === Qt.Key_Right){
             event.acceptable = true;
-            snake.x = (snake.x) + 55
+            dir = "RIGHT"
         }
         if(event.key === Qt.Key_Left){
             event.acceptable = true;
-            snake.x = (snake.x) - 55
+            dir = "LEFT"
         }
     }
 
-/*
-    Component.onCompleted: {
-
-        prevX = x
-        prevY = y
+    Timer {
+        interval: 150; running: true; repeat: true;
+        onTriggered:
+            if (dir === "UP"){
+                snake.y = (snake.y) - 40
+            }
+            else  if (dir === "DOWN"){
+                snake.y = (snake.y) + 40
+            }
+            else  if (dir === "RIGHT"){
+                snake.x = (snake.x) + 40
+            }
+            else  if (dir === "LEFT"){
+                snake.x = (snake.x) - 40
+            }
     }
-
-    onXChanged: {
-        if(next !== null)
-        {
-            next.x = prevX
-            next.y = y
-        }
-
-        prevX = x
-    }
-
-    onYChanged: {
-        if(next !== null)
-        {
-            next.x = x
-            next.y = prevY
-        }
-
-        prevY = y
-    } */
-
 
     Image {
         id: snake
-        source: "image/hed.png"
-
-        width: background.width * 0.05
-        height: background.height * 0.05
+        source: "image/hed.jpg"
     }
 }
 

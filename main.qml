@@ -6,25 +6,23 @@ import QtQuick.Window 2.2
 ApplicationWindow {
     id: root
     visible: true
-    width: 800
-    height: 600
+    width: 640
+    height: 480
     title: qsTr("Snake Game")
 
-    SystemPalette { id:activePallette}
+    SystemPalette { id:activePallette }
 
-    Image {
-        id:background
 
-        height:  root.height
-        width:   root.width
+    GameGround {
+     id: gameGround
 
-        anchors.fill: parent
+     height: root.height
+     width: root.width
 
-        source: "image/background.jpg"
+     anchors.top: toolbar.bottom
     }
 
-    Buttons
-    {
+    Buttons {
         id: toolbar
 
         anchors.left: root.left
@@ -34,6 +32,6 @@ ApplicationWindow {
     Snake {
         id: mySnake
 
-        anchors.centerIn: background
+        anchors.centerIn: gameGround
     }
 }
