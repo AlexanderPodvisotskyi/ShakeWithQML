@@ -19,20 +19,20 @@ ApplicationWindow {
         height: root.height
         width: root.width
 
-        anchors.top: toolbar.bottom
+   //     anchors.top: toolbar.bottom
     }
 
-    Buttons {
-        id: toolbar
+//    Buttons {
+//        id: toolbar
 
-        anchors.left: root.left
-        anchors.top : root.top
-    }
+//        anchors.left: root.left
+//        anchors.top : root.top
+//    }
 
-    Wall {
+//     Wall {
 
-        id:wall
-    }
+//        id:wall
+//    }
 
 
 

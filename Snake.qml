@@ -2,50 +2,55 @@ import QtQuick 2.0
 
 
 Item {
+    id: snake
     focus: true
 
-    property string dir: ""
+    property string direction: ""
 
     Keys.onPressed: {
 
         if(event.key === Qt.Key_Up){
             event.acceptable = true;
-            dir = "UP"
+            direction = "UP"
         }
         if(event.key === Qt.Key_Down){
             event.acceptable = true;
-            dir = "DOWN"
+            direction = "DOWN"
         }
         if(event.key === Qt.Key_Right){
             event.acceptable = true;
-            dir = "RIGHT"
+            direction = "RIGHT"
         }
         if(event.key === Qt.Key_Left){
             event.acceptable = true;
-            dir = "LEFT"
+            direction = "LEFT"
         }
     }
 
     Timer {
         interval: 150; running: true; repeat: true;
         onTriggered:
-            if (dir === "UP"){
-                snake.y = (snake.y) - 40
+            if (direction === "UP"){
+                snakeHead.y = (snakeHead.y) - 40
             }
-            else  if (dir === "DOWN"){
-                snake.y = (snake.y) + 40
+            else  if (direction === "DOWN"){
+                snakeHead.y = (snakeHead.y) + 40
             }
-            else  if (dir === "RIGHT"){
-                snake.x = (snake.x) + 40
+            else  if (direction === "RIGHT"){
+                snakeHead.x = (snakeHead.x) + 40
             }
-            else  if (dir === "LEFT"){
-                snake.x = (snake.x) - 40
+            else  if (direction === "LEFT"){
+                snakeHead.x = (snakeHead.x) - 40
             }
     }
 
-    Image {
-        id: snake
-        source: "image/hed.jpg"
+    SnakePiece {
+        id: snakeHead
+
+        x:40
+        y:40
+
+        color: "blue"
     }
 }
 
