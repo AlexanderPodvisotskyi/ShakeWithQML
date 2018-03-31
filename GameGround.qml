@@ -1,6 +1,12 @@
-import QtQuick 2.0
+import QtQuick 2.9
+import "qrc:/JavaScript/GameGround.js" as GameGroundLogic
 
 Rectangle {
+    id: gameGround
+
+    Component.onCompleted: {
+        GameGroundLogic.mainGameGround = gameGround
+    }
 
     Image {
         id:background
@@ -10,6 +16,8 @@ Rectangle {
 
         source: "image/background.jpg"
     }
+
+
 
     //    Image {
     //        id: fruit

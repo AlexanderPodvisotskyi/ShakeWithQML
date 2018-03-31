@@ -1,5 +1,6 @@
 import QtQuick 2.9
 import "qrc:/JavaScript/Snake.js" as SnakeLogic
+import "qrc:/JavaScript/GameGround.js" as GameGroundLogic
 
 Item {
     id: snake
@@ -56,17 +57,22 @@ Item {
             event.acceptable = true;
             SnakeLogic.addPiece();
         }
-        if(event.key === Qt.Key_Control)
-        {
-            event.acceptable = true;
-            timer.interval -= 10;
-            if(timer.interval <= 0)
-                timer.interval = 1
-        }
+
         if(event.key === Qt.Key_Alt)
         {
             event.acceptable = true;
-            timer.interval += 10;
+            if(timer.running)
+                timer.stop()
+            else
+                timer.start()
+        }
+
+        if(event.key === Qt.Key_C)
+        {
+            event.acceptable = true;
+            var founds = GameGroundLogic.collision(snakeHead)
+
+//            for(var index = 0; index < founds.length; index++)
         }
     }
 
@@ -84,14 +90,16 @@ Item {
 
         x:40
         y:40
-        z: -1
 
         color: "red"
     }
 
+
     Component.onCompleted: {
         SnakeLogic.head = snakeHead
         SnakeLogic.tail = snakeHead
+
+        GameGroundLogic.listElement.push(snakeHead)
     }
 }
 

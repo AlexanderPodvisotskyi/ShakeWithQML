@@ -12,5 +12,6 @@
     </qresource>
     <qresource prefix="/JavaScript">
         <file>Snake.js</file>
+        <file>GameGround.js</file>
     </qresource>
 </RCC>

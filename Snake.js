@@ -1,8 +1,11 @@
-.import QtQuick 2.7 as QML
+.import QtQuick 2.9 as QML
+.import "qrc:/JavaScript/GameGround.js" as GameGroundLogic
 
 var head = null
 var tail = null
 
+
+// add Piece to Snake
 function addPiece()
 {
     var newPieceComponent = Qt.createComponent("qrc:/SnakePiece.qml")
@@ -13,5 +16,7 @@ function addPiece()
 
         tail.next = newPiece
         tail = tail.next
+
+        GameGroundLogic.listElement.push(newPiece)
     }
 }
