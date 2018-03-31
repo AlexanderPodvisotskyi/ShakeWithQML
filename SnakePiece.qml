@@ -8,7 +8,6 @@ Rectangle {
     property int prevY: 0
 
     Component.onCompleted: {
-
         prevX = x
         prevY = y
     }
@@ -16,7 +15,7 @@ Rectangle {
     width: 40
     height: 40
 
-    color: "black"
+    color: "gray"
 
     onXChanged: {
         if(next !== null) {

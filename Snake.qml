@@ -1,47 +1,82 @@
-import QtQuick 2.0
-
+import QtQuick 2.9
+import "qrc:/JavaScript/Snake.js" as SnakeLogic
 
 Item {
     id: snake
     focus: true
 
-    property string direction: ""
+    property int direction: 0
+    readonly property int directionUp: 1
+    readonly property int directionDown: 2
+    readonly property int directionLeft: 3
+    readonly property int directionRight: 4
+
+    function onTimerDirection() {
+        if (direction === directionUp){
+            snakeHead.y = snakeHead.y - snakeHead.height
+            if(snakeHead.y < 0)
+                snakeHead.y = Math.floor(root.height / snakeHead.height) * snakeHead.height - snakeHead.height
+        }
+        else  if (direction === directionDown){
+            snakeHead.y = snakeHead.y + snakeHead.height
+            if(snakeHead.y > Math.floor(root.height / snakeHead.height) * snakeHead.height - snakeHead.height)
+                snakeHead.y = 0
+        }
+        else  if (direction === directionRight){
+            snakeHead.x = snakeHead.x + snakeHead.width
+            if(snakeHead.x > Math.floor(root.width / snakeHead.width) * snakeHead.width - snakeHead.width)
+                snakeHead.x = 0
+        }
+        else  if (direction === directionLeft){
+            snakeHead.x = snakeHead.x - snakeHead.width
+            if(snakeHead.x < 0 )
+                snakeHead.x  = Math.floor(root.width / snakeHead.width) * snakeHead.width - snakeHead.width
+        }
+    }
 
     Keys.onPressed: {
 
-        if(event.key === Qt.Key_Up){
+        if(event.key === Qt.Key_Up && direction !== directionDown) {
             event.acceptable = true;
-            direction = "UP"
+            direction = directionUp
         }
-        if(event.key === Qt.Key_Down){
+        if(event.key === Qt.Key_Down && direction !== directionUp) {
             event.acceptable = true;
-            direction = "DOWN"
+            direction = directionDown
         }
-        if(event.key === Qt.Key_Right){
+        if(event.key === Qt.Key_Right && direction !== directionLeft) {
             event.acceptable = true;
-            direction = "RIGHT"
+            direction = directionRight
         }
-        if(event.key === Qt.Key_Left){
+        if(event.key === Qt.Key_Left && direction !== directionRight) {
             event.acceptable = true;
-            direction = "LEFT"
+            direction = directionLeft
+        }
+        if(event.key === Qt.Key_Space ) {
+            event.acceptable = true;
+            SnakeLogic.addPiece();
+        }
+        if(event.key === Qt.Key_Control)
+        {
+            event.acceptable = true;
+            timer.interval -= 10;
+            if(timer.interval <= 0)
+                timer.interval = 1
+        }
+        if(event.key === Qt.Key_Alt)
+        {
+            event.acceptable = true;
+            timer.interval += 10;
         }
     }
 
     Timer {
-        interval: 150; running: true; repeat: true;
-        onTriggered:
-            if (direction === "UP"){
-                snakeHead.y = (snakeHead.y) - 40
-            }
-            else  if (direction === "DOWN"){
-                snakeHead.y = (snakeHead.y) + 40
-            }
-            else  if (direction === "RIGHT"){
-                snakeHead.x = (snakeHead.x) + 40
-            }
-            else  if (direction === "LEFT"){
-                snakeHead.x = (snakeHead.x) - 40
-            }
+        id: timer
+        interval: 150
+        running: true
+        repeat: true
+
+        onTriggered: onTimerDirection()
     }
 
     SnakePiece {
@@ -49,8 +84,14 @@ Item {
 
         x:40
         y:40
+        z: -1
 
-        color: "blue"
+        color: "red"
+    }
+
+    Component.onCompleted: {
+        SnakeLogic.head = snakeHead
+        SnakeLogic.tail = snakeHead
     }
 }
 

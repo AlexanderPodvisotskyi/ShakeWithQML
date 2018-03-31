@@ -39,6 +39,6 @@ ApplicationWindow {
     Snake {
         id: mySnake
 
-        anchors.centerIn: gameGround
+//        anchors.centerIn: gameGround
     }
 }
