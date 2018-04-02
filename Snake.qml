@@ -70,9 +70,20 @@ Item {
         if(event.key === Qt.Key_C)
         {
             event.acceptable = true;
-            var founds = GameGroundLogic.collision(snakeHead)
+            var founds  = GameGroundLogic.collision(snakeHead)
 
-//            for(var index = 0; index < founds.length; index++)
+            console.log(founds)
+            console.log(GameGroundLogic.listElement)
+            console.log(GameGroundLogic.listFruit)
+
+            for (var indexE = GameGroundLogic.listElement.length; indexE < GameGroundLogic.listElement.length; indexE--) {
+                for(var indexF = GameGroundLogic.listFruit.length; indexF < GameGroundLogic.listFruit.length; indexF--){
+                    if(GameGroundLogic.ListElement[indexE] === GameGroundLogic.listFruit[indexF])
+                        GameGroundLogic.createFruit()
+                        SnakeLogic.addPiece()
+                }
+            }
+
         }
     }
 
@@ -101,5 +112,7 @@ Item {
 
         GameGroundLogic.listElement.push(snakeHead)
     }
+
+
 }
 
