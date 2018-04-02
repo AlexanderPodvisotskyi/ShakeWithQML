@@ -1,7 +1,7 @@
 import QtQuick 2.9
 import QtQuick.Controls 2.2
 import QtQuick.Window 2.2
-// import "logic.js" as gameLogic
+
 import "qrc:/JavaScript/GameGround.js" as GameGroundLogic
 
 ApplicationWindow {
@@ -20,7 +20,8 @@ ApplicationWindow {
 
         height: root.height
         width: root.width
-    }
+
+        }
 
 //    Buttons {
 //        id: toolbar
@@ -28,10 +29,4 @@ ApplicationWindow {
 //        anchors.left: root.left
 //        anchors.top : root.top
 //    }
-
-
-
-    Snake {
-        id: mySnake
-    }
 }

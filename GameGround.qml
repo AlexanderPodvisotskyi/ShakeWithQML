@@ -1,30 +1,26 @@
 import QtQuick 2.9
 import "qrc:/JavaScript/GameGround.js" as GameGroundLogic
+import "qrc:/JavaScript/Snake.js" as SnakeLogic
 
 Rectangle {
     id: gameGround
 
     Component.onCompleted: {
-        GameGroundLogic.mainGameGround = gameGround
+        GameGroundLogic.mainGameGround = gameGround             // set GameGround main
+        GameGroundLogic.createFruit()                           //  create Fruit
     }
 
     Image {
         id:background
 
-        height:  root.height - Buttons.height
-        width:   root.width
+        height: gameGround.height
+        width:  gameGround.width
 
         source: "image/background.jpg"
     }
 
-
-
-    //    Image {
-    //        id: fruit
-
-    //        x: Math.random() * 640
-    //        y: Math.random() * 480
-
-    //        source:"image/fruit.png"
-    //    }
+    Snake{
+        id: snake
+    }
 }
+

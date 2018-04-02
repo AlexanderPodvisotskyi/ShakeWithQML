@@ -3,9 +3,11 @@
 
 var listElement = []
 var mainGameGround = null
+var fruit = null
 
 // check item collision on gameGround
 // GG - GameGround
+
 
 
 function collision(item) {
@@ -30,3 +32,18 @@ function collision(item) {
 
     return foundElements
 }
+
+function createFruit()
+{
+    var newFruitComponent = Qt.createComponent("qrc:/Fruit.qml")
+    if (newFruitComponent.status === QML.Component.Ready) {
+        var newFruit = newFruitComponent.createObject(mainGameGround)
+
+        newFruit.x = Math.random() * mainGameGround.width
+        newFruit.y = Math.random() * mainGameGround.height
+
+        listElement.push(newFruit)
+    }
+
+}
+
