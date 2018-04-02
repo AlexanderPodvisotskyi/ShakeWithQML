@@ -76,16 +76,18 @@ Item {
             console.log(GameGroundLogic.listElement)
             console.log(GameGroundLogic.listFruit)
 
-            for (var indexE = GameGroundLogic.listElement.length; indexE < GameGroundLogic.listElement.length; indexE--) {
-                for(var indexF = GameGroundLogic.listFruit.length; indexF < GameGroundLogic.listFruit.length; indexF--){
-                    if(GameGroundLogic.ListElement[indexE] === GameGroundLogic.listFruit[indexF])
-                        GameGroundLogic.createFruit()
-                        SnakeLogic.addPiece()
+            var cont = true;
+
+            for (var indexFounds = 0; indexFounds < founds.length; indexFounds++) {
+                if(GameGroundLogic.listFruit.indexOf(founds[indexFounds]) !== -1) {
+                    GameGroundLogic.createFruit()
+                    SnakeLogic.addPiece()
+                    break;
                 }
             }
-
         }
     }
+
 
     Timer {
         id: timer
