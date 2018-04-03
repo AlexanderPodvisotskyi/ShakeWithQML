@@ -7,7 +7,7 @@ Rectangle {
 
     Component.onCompleted: {
         GameGroundLogic.mainGameGround = gameGround             // set GameGround main
-        GameGroundLogic.createFruit()                           //  create Fruit
+        GameGroundLogic.createFruit()                           // create Fruit
     }
 
     Image {

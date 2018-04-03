@@ -72,12 +72,6 @@ Item {
             event.acceptable = true;
             var founds  = GameGroundLogic.collision(snakeHead)
 
-            console.log(founds)
-            console.log(GameGroundLogic.listElement)
-            console.log(GameGroundLogic.listFruit)
-
-            var cont = true;
-
             for (var indexFounds = 0; indexFounds < founds.length; indexFounds++) {
                 if(GameGroundLogic.listFruit.indexOf(founds[indexFounds]) !== -1) {
                     GameGroundLogic.createFruit()
@@ -88,14 +82,29 @@ Item {
         }
     }
 
-
     Timer {
         id: timer
         interval: 150
         running: true
         repeat: true
 
-        onTriggered: onTimerDirection()
+        onTriggered: {
+            onTimerDirection()
+
+            var founds  = GameGroundLogic.collision(snakeHead)
+
+            for (var indexFounds = 0; indexFounds < founds.length; indexFounds++) {
+                if(GameGroundLogic.listFruit.indexOf(founds[indexFounds]) !== -1) {
+                    GameGroundLogic.createFruit()
+                    GameGroundLogic.deleteFruit(indexFounds)
+                    SnakeLogic.addPiece()
+
+                    console.log(GameGroundLogic.listElement)
+                    console.log(GameGroundLogic.listFruit)
+                    break;
+                }
+            }
+        }
     }
 
     SnakePiece {
@@ -106,7 +115,6 @@ Item {
 
         color: "red"
     }
-
 
     Component.onCompleted: {
         SnakeLogic.head = snakeHead

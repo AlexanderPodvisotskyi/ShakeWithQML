@@ -14,19 +14,10 @@ ApplicationWindow {
 
     SystemPalette { id:activePallette }
 
-
     GameGround {
         id: gameGroundMain
 
         height: root.height
         width: root.width
-
         }
-
-//    Buttons {
-//        id: toolbar
-
-//        anchors.left: root.left
-//        anchors.top : root.top
-//    }
 }

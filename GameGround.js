@@ -20,6 +20,7 @@ function collision(item) {
         // if Item solo in GameGround, it s Hat, seacrh next element
         if(item === element)
             continue
+
         // Search element in GameGround (tail) and compares with HeadSnake, if he equal return indexelement
         var elementGG = mainGameGround.mapToItem(null, element.x, element.y, element.width, element.height)
         if(elementGG.x <= itemGG.x && elementGG.x + elementGG.width >= itemGG.x)
@@ -29,11 +30,14 @@ function collision(item) {
     return foundElements
 }
 
+
+
 function createFruit()
 {
+
     var newFruitComponent = Qt.createComponent("qrc:/Fruit.qml")
     if (newFruitComponent.status === QML.Component.Ready) {
-        var newFruit = newFruitComponent.createObject(mainGameGround)
+        var  newFruit = newFruitComponent.createObject(mainGameGround)
 
         newFruit.x = Math.random() * mainGameGround.width
         newFruit.y = Math.random() * mainGameGround.height
@@ -41,6 +45,11 @@ function createFruit()
         listElement.push(newFruit)
         listFruit.push(newFruit)
     }
+}
 
+function deleteFruit(fruit) {
+
+    listFruit.splice(fruit,1)
+    listElement.splice(fruit,1)
 }
 
