@@ -96,12 +96,13 @@ Item {
             for (var indexFounds = 0; indexFounds < founds.length; indexFounds++) {
                 if(GameGroundLogic.listFruit.indexOf(founds[indexFounds]) !== -1) {
                     GameGroundLogic.createFruit()
-                    GameGroundLogic.deleteFruit(indexFounds)
+                    GameGroundLogic.deleteFruit(founds[indexFounds])
                     SnakeLogic.addPiece()
 
                     console.log(GameGroundLogic.listElement)
                     console.log(GameGroundLogic.listFruit)
                     break;
+
                 }
             }
         }

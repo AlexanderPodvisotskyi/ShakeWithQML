@@ -1,9 +1,16 @@
 .pragma library
 .import QtQuick 2.9 as QML
 
+var max = 0
+var min = 0
 var listFruit = []
 var listElement = []
 var mainGameGround = null
+
+function random(min, max) {
+
+   return Math.random() * (max - min) + min;
+}
 
 // check item collision on gameGround
 // GG - GameGround
@@ -31,7 +38,6 @@ function collision(item) {
 }
 
 
-
 function createFruit()
 {
 
@@ -39,8 +45,8 @@ function createFruit()
     if (newFruitComponent.status === QML.Component.Ready) {
         var  newFruit = newFruitComponent.createObject(mainGameGround)
 
-        newFruit.x = Math.random() * mainGameGround.width
-        newFruit.y = Math.random() * mainGameGround.height
+        newFruit.x = Math.floor(random(newFruit.width,mainGameGround.width) / newFruit.width) * newFruit.width - newFruit.width
+        newFruit.y = Math.floor(random(newFruit.height,mainGameGround.height) / newFruit.height) * newFruit.height
 
         listElement.push(newFruit)
         listFruit.push(newFruit)
@@ -49,7 +55,9 @@ function createFruit()
 
 function deleteFruit(fruit) {
 
-    listFruit.splice(fruit,1)
-    listElement.splice(fruit,1)
+
+    listElement.splice(listElement.indexOf(fruit),1)
+    listFruit.splice(listFruit.indexOf(fruit),1)
+    fruit.destroy()
 }
 
