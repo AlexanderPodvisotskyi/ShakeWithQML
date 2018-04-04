@@ -1,8 +1,7 @@
 .pragma library
 .import QtQuick 2.9 as QML
 
-var max = 0
-var min = 0
+var score = 0
 var listFruit = []
 var listElement = []
 var mainGameGround = null
@@ -45,19 +44,32 @@ function createFruit()
     if (newFruitComponent.status === QML.Component.Ready) {
         var  newFruit = newFruitComponent.createObject(mainGameGround)
 
-        newFruit.x = Math.floor(random(newFruit.width,mainGameGround.width) / newFruit.width) * newFruit.width - newFruit.width
-        newFruit.y = Math.floor(random(newFruit.height,mainGameGround.height) / newFruit.height) * newFruit.height
+        newFruit.x = Math.floor(random(newFruit.width * 2,mainGameGround.width) / newFruit.width) * newFruit.width - newFruit.width
+        newFruit.y = Math.floor(random(newFruit.height * 2 ,mainGameGround.height) / newFruit.height) * newFruit.height - newFruit.height
 
         listElement.push(newFruit)
         listFruit.push(newFruit)
+
+        score += 10
     }
 }
 
 function deleteFruit(fruit) {
 
-
     listElement.splice(listElement.indexOf(fruit),1)
     listFruit.splice(listFruit.indexOf(fruit),1)
     fruit.destroy()
+}
+
+
+function gameOver(timer,text) {
+
+    console.log("It s a tail")
+    timer.stop()
+    if (score >= 100) {
+        text.text = "Nice try"
+    }else{
+        text.text = "Bad try"
+    }
 }
 

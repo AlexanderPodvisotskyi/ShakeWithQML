@@ -6,11 +6,14 @@ Item {
     id: snake
     focus: true
 
+    property int level: 0
+    property int score: 0
     property int direction: 0
     readonly property int directionUp: 1
     readonly property int directionDown: 2
     readonly property int directionLeft: 3
     readonly property int directionRight: 4
+
 
     function onTimerDirection() {
         if (direction === directionUp){
@@ -95,17 +98,38 @@ Item {
 
             for (var indexFounds = 0; indexFounds < founds.length; indexFounds++) {
                 if(GameGroundLogic.listFruit.indexOf(founds[indexFounds]) !== -1) {
+
                     GameGroundLogic.createFruit()
                     GameGroundLogic.deleteFruit(founds[indexFounds])
                     SnakeLogic.addPiece()
+                    score += 10
 
-                    console.log(GameGroundLogic.listElement)
-                    console.log(GameGroundLogic.listFruit)
+                    if(score % 50 === 0){
+                        timer.interval -=25
+                        level++;
+                        console.log(timer.interval)
+                        console.log(GameGroundLogic.score)
+
+                        if(level === 5)
+                        {
+                            text.text = "You win this game"
+                            timer.stop();
+                        }
+                    }
                     break;
-
+                }else{
+                  GameGroundLogic.gameOver(timer,text)
                 }
             }
         }
+    }
+
+    Text {
+        id:text
+
+        text: score
+        font.pointSize: 25
+        color : "#ECEC0D"
     }
 
     SnakePiece {
@@ -123,7 +147,4 @@ Item {
 
         GameGroundLogic.listElement.push(snakeHead)
     }
-
-
 }
-

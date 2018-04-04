@@ -9,7 +9,7 @@ var tail = null
 function addPiece()
 {
     var newPieceComponent = Qt.createComponent("qrc:/SnakePiece.qml")
-    if (newPieceComponent.status === QML.Component.Ready) {
+    if (newPieceComponent !== null) {
         var newPiece = newPieceComponent.createObject(snake)
         newPiece.x = tail.x
         newPiece.y = tail.y
