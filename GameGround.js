@@ -41,7 +41,7 @@ function createFruit()
 {
 
     var newFruitComponent = Qt.createComponent("qrc:/Fruit.qml")
-    if (newFruitComponent.status === QML.Component.Ready) {
+    if (newFruitComponent !== null) {
         var  newFruit = newFruitComponent.createObject(mainGameGround)
 
         newFruit.x = Math.floor(random(newFruit.width * 2,mainGameGround.width) / newFruit.width) * newFruit.width - newFruit.width
@@ -65,7 +65,7 @@ function deleteFruit(fruit) {
 function gameOver(timer,text) {
 
     console.log("It s a tail")
-    timer.stop()
+    timer.interval = 0
     if (score >= 100) {
         text.text = "Nice try"
     }else{

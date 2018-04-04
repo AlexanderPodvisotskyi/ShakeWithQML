@@ -15,6 +15,8 @@ Rectangle {
     width: 40
     height: 40
 
+    radius: 10
+
     color: "gray"
 
     onXChanged: {

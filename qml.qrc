@@ -9,6 +9,7 @@
         <file>SnakePiece.qml</file>
         <file>Fruit.qml</file>
         <file>ToolBar.qml</file>
+        <file>image/Snake.icns</file>
     </qresource>
     <qresource prefix="/JavaScript">
         <file>Snake.js</file>

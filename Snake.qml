@@ -113,7 +113,7 @@ Item {
                         if(level === 5)
                         {
                             text.text = "You win this game"
-                            timer.stop();
+                            timer.interval = 0
                         }
                     }
                     break;
@@ -135,6 +135,7 @@ Item {
     SnakePiece {
         id: snakeHead
 
+        radius: 15
         x:40
         y:40
 
