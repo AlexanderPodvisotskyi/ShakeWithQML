@@ -41,7 +41,7 @@ function createFruit()
 {
 
     var newFruitComponent = Qt.createComponent("qrc:/Fruit.qml")
-    if (newFruitComponent !== null) {
+    if (newFruitComponent !== null ){
         var  newFruit = newFruitComponent.createObject(mainGameGround)
 
         newFruit.x = Math.floor(random(newFruit.width * 2,mainGameGround.width) / newFruit.width) * newFruit.width - newFruit.width
