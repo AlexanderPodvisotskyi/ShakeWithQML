@@ -113,7 +113,7 @@ Item {
                         if(level === 5)
                         {
                             text.text = "You win this game"
-                            timer.intrval = 0
+                            timer.interval = 0
                         }
                     }
                     break;
