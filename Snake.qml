@@ -6,14 +6,16 @@ Item {
     id: snake
     focus: true
 
-    property int level: 0
     property int score: 0
     property int direction: 0
+
     readonly property int directionUp: 1
     readonly property int directionDown: 2
     readonly property int directionLeft: 3
     readonly property int directionRight: 4
 
+    property alias timerInterval: timer.interval
+    property alias textText: text.text
 
     function onTimerDirection() {
         if (direction === directionUp){
@@ -41,29 +43,23 @@ Item {
     Keys.onPressed: {
 
         if(event.key === Qt.Key_Up && direction !== directionDown) {
-            event.acceptable = true;
             direction = directionUp
         }
         if(event.key === Qt.Key_Down && direction !== directionUp) {
-            event.acceptable = true;
             direction = directionDown
         }
         if(event.key === Qt.Key_Right && direction !== directionLeft) {
-            event.acceptable = true;
             direction = directionRight
         }
         if(event.key === Qt.Key_Left && direction !== directionRight) {
-            event.acceptable = true;
             direction = directionLeft
         }
         if(event.key === Qt.Key_Space ) {
-            event.acceptable = true;
             SnakeLogic.addPiece();
         }
 
         if(event.key === Qt.Key_Alt)
         {
-            event.acceptable = true;
             if(timer.running)
                 timer.stop()
             else
@@ -72,7 +68,6 @@ Item {
 
         if(event.key === Qt.Key_C)
         {
-            event.acceptable = true;
             var founds  = GameGroundLogic.collision(snakeHead)
 
             for (var indexFounds = 0; indexFounds < founds.length; indexFounds++) {
@@ -93,37 +88,9 @@ Item {
 
         onTriggered: {
             onTimerDirection()
-
-            var founds  = GameGroundLogic.collision(snakeHead)
-
-            for (var indexFounds = 0; indexFounds < founds.length; indexFounds++) {
-                if(GameGroundLogic.listFruit.indexOf(founds[indexFounds]) !== -1) {
-
-                    GameGroundLogic.createFruit()
-                    GameGroundLogic.deleteFruit(founds[indexFounds])
-                    SnakeLogic.addPiece()
-                    score += 10
-
-                    if(score % 50 === 0){
-                        timer.interval -=25
-                        level++;
-                        console.log(timer.interval)
-                        console.log(GameGroundLogic.score)
-
-                        if(level === 5)
-                        {
-                            text.text = "You win this game"
-                            timer.interval = 0
-                        }
-                    }
-                    break;
-                }else{
-                  GameGroundLogic.gameOver(timer,text)
-                }
-            }
+            SnakeLogic.foundsItem()
         }
     }
-
     Text {
         id:text
 
@@ -149,3 +116,5 @@ Item {
         GameGroundLogic.listElement.push(snakeHead)
     }
 }
+
+

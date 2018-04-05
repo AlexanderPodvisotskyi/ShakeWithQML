@@ -9,6 +9,5 @@ Image {
     width: 40
 
     source: "image/fruit.png"
-
 }
 

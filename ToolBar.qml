@@ -3,9 +3,7 @@ import "qrc:/JavaScript/GameGround.js" as GameGroundLogic
 
 Rectangle {
 
-
     Text {
-
         id:text
 
         text: GameGroundLogic.score

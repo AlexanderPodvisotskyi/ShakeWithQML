@@ -1,14 +1,14 @@
 .pragma library
 .import QtQuick 2.9 as QML
 
-var score = 0
+var level = 0
 var listFruit = []
 var listElement = []
 var mainGameGround = null
 
 function random(min, max) {
 
-   return Math.random() * (max - min) + min;
+    return Math.random() * (max - min) + min;
 }
 
 // check item collision on gameGround
@@ -36,12 +36,10 @@ function collision(item) {
     return foundElements
 }
 
-
 function createFruit()
 {
-
     var newFruitComponent = Qt.createComponent("qrc:/Fruit.qml")
-    if (newFruitComponent !== null ){
+    if (newFruitComponent !== null) {
         var  newFruit = newFruitComponent.createObject(mainGameGround)
 
         newFruit.x = Math.floor(random(newFruit.width * 2,mainGameGround.width) / newFruit.width) * newFruit.width - newFruit.width
@@ -49,8 +47,6 @@ function createFruit()
 
         listElement.push(newFruit)
         listFruit.push(newFruit)
-
-        score += 10
     }
 }
 
@@ -61,15 +57,30 @@ function deleteFruit(fruit) {
     fruit.destroy()
 }
 
-
-function gameOver(timer,text) {
+function gameOver(contextObj) {
 
     console.log("It s a tail")
-    timer.interval = 0
-    if (score >= 100) {
-        text.text = "Nice try"
+    contextObj.timerInterval = 0
+
+    if (contextObj.textText >= 100) {
+        contextObj.textText = "Nice try"
     }else{
-        text.text = "Bad try"
+        contextObj.textText = "Bad try"
+    }
+}
+
+function gameLogic(contextObj) {
+
+    if(contextObj.textText % 50 === 0){
+        contextObj.timerInterval -=25
+        level++;
+        console.log(contextObj.textText)
+        console.log(level)
+    }
+    if(level === 5)
+    {
+        contextObj.textText  = "You win this game"
+        contextObj.timerInterval = 0
     }
 }
 

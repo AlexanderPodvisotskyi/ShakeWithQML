@@ -10,7 +10,7 @@ ApplicationWindow {
     width: 800
     height: 600
     title: qsTr("Snake Game")
-//    flags: Qt.FramelessWindowHint
+    //    flags: Qt.FramelessWindowHint
 
     SystemPalette { id:activePallette }
 
@@ -19,5 +19,5 @@ ApplicationWindow {
 
         height: root.height
         width: root.width
-        }
+    }
 }
