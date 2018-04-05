@@ -1,4 +1,5 @@
 import QtQuick 2.9
+import "qrc:/JavaScript/GameGround.js" as GameGroundLogic
 
 Rectangle {
 
@@ -10,6 +11,7 @@ Rectangle {
     Component.onCompleted: {
         prevX = x
         prevY = y
+
     }
 
     width: 40
@@ -22,7 +24,6 @@ Rectangle {
             next.x = prevX
             next.y = y
         }
-
         prevX = x
     }
 
@@ -31,7 +32,6 @@ Rectangle {
             next.y = prevY
             next.x = x
         }
-
         prevY = y
     }
 }

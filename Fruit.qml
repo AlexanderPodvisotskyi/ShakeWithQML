@@ -10,4 +10,3 @@ Image {
 
     source: "image/fruit.png"
 }
-

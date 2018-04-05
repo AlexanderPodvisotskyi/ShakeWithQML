@@ -10,6 +10,7 @@ function addPiece()
     var newPieceComponent = Qt.createComponent("qrc:/SnakePiece.qml")
     if (newPieceComponent !== null) {
         var newPiece = newPieceComponent.createObject(snake)
+
         newPiece.x = tail.x
         newPiece.y = tail.y
 
@@ -20,7 +21,9 @@ function addPiece()
     }
 }
 
-function foundsItem(){
+
+function foundsItem()
+{
     var founds  = GameGroundLogic.collision(snakeHead)
 
     for (var indexFounds = 0; indexFounds < founds.length; indexFounds++) {
@@ -28,9 +31,11 @@ function foundsItem(){
 
             GameGroundLogic.createFruit()
             GameGroundLogic.deleteFruit(founds[indexFounds])
+
             addPiece()
             score += 10
             GameGroundLogic.gameLogic(snake)
+
             break;
         }else{
             GameGroundLogic.gameOver(snake)

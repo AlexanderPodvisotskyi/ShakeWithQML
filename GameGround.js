@@ -6,14 +6,15 @@ var listFruit = []
 var listElement = []
 var mainGameGround = null
 
-function random(min, max) {
-
+function random(min, max)
+{
     return Math.random() * (max - min) + min;
 }
 
 // check item collision on gameGround
 // GG - GameGround
-function collision(item) {
+function collision(item)
+{
     var itemGG = mainGameGround.mapToItem(null, item.x, item.y, item.width, item.height)
     itemGG.x = itemGG.x + Math.round(itemGG.width / 2)
     itemGG.y = itemGG.y + Math.round(itemGG.height / 2)
@@ -50,31 +51,46 @@ function createFruit()
     }
 }
 
-function deleteFruit(fruit) {
-
+function deleteFruit(fruit)
+{
     listElement.splice(listElement.indexOf(fruit),1)
     listFruit.splice(listFruit.indexOf(fruit),1)
     fruit.destroy()
 }
 
-function gameOver(contextObj) {
+function deletePiece(rezult){
+    for(var i = 0 ; i< listElement.length;i++){
+        for(var j = 0 ; j< listFruit.length;j++){
+            if((listElement[i] !== listFruit[j]))
+                rezult = listElement[i]
+        }}
 
+    listElement.splice(listElement.indexOf(rezult),1)
+ rezult.destroy()
+
+    console.log(listElement)
+    console.log(listFruit)
+
+}
+
+function gameOver(contextObj)
+{
     console.log("It s a tail")
     contextObj.timerInterval = 0
 
-    if (contextObj.textText >= 100) {
-        contextObj.textText = "Nice try"
+    if (contextObj.scoresText >= 100) {
+        contextObj.scoresText = "Nice try"
     }else{
-        contextObj.textText = "Bad try"
+        contextObj.scoresText = "Bad try"
     }
 }
 
-function gameLogic(contextObj) {
-
-    if(contextObj.textText % 50 === 0){
+function gameLogic(contextObj)
+{
+    if(contextObj.scoresText % 50 === 0){
         contextObj.timerInterval -=25
         level++;
-        console.log(contextObj.textText)
+        console.log(contextObj.scoresText)
         console.log(level)
     }
     if(level === 5)
