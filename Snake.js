@@ -10,7 +10,6 @@ function addPiece()
     var newPieceComponent = Qt.createComponent("qrc:/SnakePiece.qml")
     if (newPieceComponent !== null) {
         var newPiece = newPieceComponent.createObject(snake)
-
         newPiece.x = tail.x
         newPiece.y = tail.y
 
@@ -41,4 +40,17 @@ function foundsItem()
             GameGroundLogic.gameOver(snake)
         }
     }
+}
+
+function deletePiece(rezult){
+    for(var i = 0 ; i< GameGroundLogic.listElement.length;i++){
+        for(var j = 0 ; j< GameGroundLogic.listFruit.length;j++){
+            if((GameGroundLogic.listElement[i] !== GameGroundLogic.listFruit[j]))
+                rezult = GameGroundLogic.listElement[i] }}
+
+        GameGroundLogic.listElement.splice(GameGroundLogic.listElement.indexOf(rezult),1)
+    rezult.destroy()
+
+    console.log(GameGroundLogic.listElement)
+    console.log(GameGroundLogic.listFruit)
 }

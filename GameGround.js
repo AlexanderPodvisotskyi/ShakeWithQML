@@ -58,20 +58,6 @@ function deleteFruit(fruit)
     fruit.destroy()
 }
 
-function deletePiece(rezult){
-    for(var i = 0 ; i< listElement.length;i++){
-        for(var j = 0 ; j< listFruit.length;j++){
-            if((listElement[i] !== listFruit[j]))
-                rezult = listElement[i]
-        }}
-
-    listElement.splice(listElement.indexOf(rezult),1)
- rezult.destroy()
-
-    console.log(listElement)
-    console.log(listFruit)
-
-}
 
 function gameOver(contextObj)
 {
@@ -95,7 +81,7 @@ function gameLogic(contextObj)
     }
     if(level === 5)
     {
-        contextObj.textText  = "You win this game"
+        contextObj.scoresText  = "You win this game"
         contextObj.timerInterval = 0
     }
 }

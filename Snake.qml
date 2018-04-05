@@ -61,7 +61,7 @@ Item {
             else
                 timer.start()
 
-            GameGroundLogic.deletePiece()
+            SnakeLogic.deletePiece()
         }
     }
 
