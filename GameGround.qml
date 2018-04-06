@@ -26,5 +26,31 @@ Rectangle {
         id: snake
         focus: true
     }
-}
+//    Snake{
+
+//        x:0
+//        y:0
+//        focus: false
+//        id: snakes
+//    }
+
+//    Keys.onPressed: {
+
+//        if(event.key === Qt.Key_H){
+
+
+//        }
+//        else if (snake.focus === false){
+//            snake.focus = true
+//            snakes.focus = false
+//        }
+//        else if(snake.focus === true){
+//            snake.focus = false
+//            snakes.focus = true
+
+//        }
+    }
+
+
+
 

@@ -50,7 +50,7 @@ function deletePiece(rezult){
             if((GameGroundLogic.listElement[i] !== GameGroundLogic.listFruit[j]))
                 rezult = GameGroundLogic.listElement[i] }}
 
-        GameGroundLogic.listElement.splice(GameGroundLogic.listElement.indexOf(rezult),1)
+    GameGroundLogic.listElement.splice(GameGroundLogic.listElement.indexOf(rezult),1)
     rezult.destroy()
 
     console.log(GameGroundLogic.listElement)

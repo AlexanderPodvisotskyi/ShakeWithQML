@@ -66,7 +66,7 @@ Item {
 
     Timer {
         id: timer
-        interval: 150
+        interval: 200
         running: true
         repeat: true
 
