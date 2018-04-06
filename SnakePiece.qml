@@ -1,5 +1,4 @@
 import QtQuick 2.9
-//import "qrc:/JavaScript/GameGround.js" as GameGroundLogic
 
 Rectangle {
 
