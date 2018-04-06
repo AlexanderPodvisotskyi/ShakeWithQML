@@ -24,6 +24,7 @@ Rectangle {
 
     Snake{
         id: snake
+        focus: true
     }
 }
 

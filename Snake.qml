@@ -4,7 +4,6 @@ import "qrc:/JavaScript/GameGround.js" as GameGroundLogic
 
 Item {
     id: snake
-    focus: true
 
     property int score: 0
     property int direction: 0
