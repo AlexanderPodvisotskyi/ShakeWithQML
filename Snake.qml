@@ -61,7 +61,7 @@ Item {
             else
                 timer.start()
 
-            SnakeLogic.deletePiece()
+      //      SnakeLogic.deletePiece()
         }
     }
 

@@ -42,6 +42,8 @@ function foundsItem()
     }
 }
 
+
+// need fix(not work)
 function deletePiece(rezult){
     for(var i = 0 ; i< GameGroundLogic.listElement.length;i++){
         for(var j = 0 ; j< GameGroundLogic.listFruit.length;j++){

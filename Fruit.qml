@@ -1,5 +1,5 @@
 import QtQuick 2.0
-import "qrc:/JavaScript/GameGround.js" as GameGroundLogic
+//import "qrc:/JavaScript/GameGround.js" as GameGroundLogic
 
 Image {
 
@@ -8,5 +8,5 @@ Image {
     height: 40
     width: 40
 
-    source: "image/fruit.png"
+    source: "Image/image/fruit.png"
 }

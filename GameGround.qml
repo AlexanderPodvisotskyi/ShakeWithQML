@@ -19,7 +19,7 @@ Rectangle {
         height: gameGround.height
         width:  gameGround.width
 
-        source: "image/background.jpg"
+        source: "Image/image/background.jpg"
     }
 
     Snake{
