@@ -16,38 +16,19 @@ Item {
     property alias timerInterval: timer.interval
     property alias scoresText: scores.text
 
-    Keys.onPressed: {
+    Keys.onPressed:{
 
-        if(event.key === Qt.Key_Up && direction !== directionDown) {
-            direction = directionUp
+        if(event.key === Qt.Key_Up){
+            SnakeLogic.movement(directionUp)
         }
-        if(event.key === Qt.Key_Down && direction !== directionUp) {
-            direction = directionDown
+        if(event.key === Qt.Key_DOWN){
+            SnakeLogic.movement(directionDown)
         }
-        if(event.key === Qt.Key_Right && direction !== directionLeft) {
-            direction = directionRight
+        if(event.key === Qt.Key_LEFT){
+            SnakeLogic.movement(directionLeft)
         }
-        if(event.key === Qt.Key_Left && direction !== directionRight) {
-            direction = directionLeft
-        }
-        if(event.key === Qt.Key_Alt)
-        {
-            if(timer.running)
-                timer.stop()
-            else
-                timer.start()
-
-            SnakeLogic.deletePiece()
-        }
-        if(event.key === Qt.Key_H)
-        {
-            SnakeLogic.replase()
-            // SnakeLogic.restartGame();
-        }
-        if(event.key === Qt.Key_G)
-        {
-          //  SnakeLogic.replase()
-             SnakeLogic.restartGame();
+        if(event.key === Qt.Key_RIGHT){
+            SnakeLogic.movement(directionDown)
         }
     }
 

@@ -67,6 +67,10 @@ function restartGame()
         score = 0;
         timer.interval = 200
         GameGroundLogic.level = 0;
+
+        snakeHead.x = 40
+        snakeHead.y = 40
+        direction = directionRight
     }
 }
 
@@ -113,10 +117,29 @@ function replase()
     if(direction === directionUp)
         direction = directionDown
     else if(direction === directionDown)
-            direction = directionUp
+        direction = directionUp
     else if(direction === directionLeft)
         direction = directionRight
     else if(direction === directionRight)
         direction = directionLeft
+}
+
+function movement (value){
+
+    switch(value)
+    {
+    case directionUp:
+            direction = directionUp
+        break;
+    case directionDown:
+            direction = directionDown
+        break;
+    case directionRight:
+            direction = directionRight
+            break;
+    case directionLeft:
+            direction = directionLeft
+            break;
+    }
 }
 
