@@ -42,17 +42,81 @@ function foundsItem()
     }
 }
 
+function deletePiece(){
+    if(tail === head)
+        return;
 
-// need fix(not work)
-function deletePiece(rezult){
-    for(var i = 0 ; i< GameGroundLogic.listElement.length;i++){
-        for(var j = 0 ; j< GameGroundLogic.listFruit.length;j++){
-            if((GameGroundLogic.listElement[i] !== GameGroundLogic.listFruit[j]))
-                rezult = GameGroundLogic.listElement[i] }}
+    var tmp = head
+    while(tmp.next && tmp.next !== tail)
+        tmp = tmp.next
 
-    GameGroundLogic.listElement.splice(GameGroundLogic.listElement.indexOf(rezult),1)
-    rezult.destroy()
+    if(tmp === null)
+        return;
 
-    console.log(GameGroundLogic.listElement)
-    console.log(GameGroundLogic.listFruit)
+    tail.destroy()
+    GameGroundLogic.listElement.splice(GameGroundLogic.listElement.indexOf(tail),1)
+
+    tail = tmp
 }
+
+function restartGame()
+{
+    while(GameGroundLogic.listElement.length !== 2){
+
+        deletePiece();
+        score = 0;
+        timer.interval = 200
+        GameGroundLogic.level = 0;
+    }
+}
+
+function onTimerDirection()
+{
+    if (direction === directionUp){
+        head.y = head.y - head.height
+        if(head.y < 0)
+            head.y = Math.floor(GameGroundLogic.mainGameGround.height / head.height) * head.height - head.height
+    }
+    else  if (direction === directionDown){
+        head.y = head.y + head.height
+        if(head.y > Math.floor(GameGroundLogic.mainGameGround.height / head.height) * head.height - head.height)
+            head.y = 0
+    }
+    else  if (direction === directionRight){
+        head.x = head.x + head.width
+        if(head.x > Math.floor(GameGroundLogic.mainGameGround.width / head.width) * head.width - head.width)
+            head.x = 0
+    }
+    else  if (direction === directionLeft){
+        head.x = head.x - head.width
+        if(head.x < 0 )
+            head.x  = Math.floor(GameGroundLogic.mainGameGround.width / head.width) * head.width - head.width
+    }
+}
+
+function replase()
+{
+    var prevLast = head
+    while(prevLast.next && prevLast.next !== tail)
+        prevLast = prevLast.next
+
+    if(prevLast === null)
+        return;
+
+    var temp = head
+    head = tail
+    head.next = temp.next
+    tail = temp
+    tail.next = null
+    prevLast.next = tail
+
+    if(direction === directionUp)
+        direction = directionDown
+    else if(direction === directionDown)
+            direction = directionUp
+    else if(direction === directionLeft)
+        direction = directionRight
+    else if(direction === directionRight)
+        direction = directionLeft
+}
+

@@ -16,29 +16,6 @@ Item {
     property alias timerInterval: timer.interval
     property alias scoresText: scores.text
 
-    function onTimerDirection() {
-        if (direction === directionUp){
-            snakeHead.y = snakeHead.y - snakeHead.height
-            if(snakeHead.y < 0)
-                snakeHead.y = Math.floor(root.height / snakeHead.height) * snakeHead.height - snakeHead.height
-        }
-        else  if (direction === directionDown){
-            snakeHead.y = snakeHead.y + snakeHead.height
-            if(snakeHead.y > Math.floor(root.height / snakeHead.height) * snakeHead.height - snakeHead.height)
-                snakeHead.y = 0
-        }
-        else  if (direction === directionRight){
-            snakeHead.x = snakeHead.x + snakeHead.width
-            if(snakeHead.x > Math.floor(root.width / snakeHead.width) * snakeHead.width - snakeHead.width)
-                snakeHead.x = 0
-        }
-        else  if (direction === directionLeft){
-            snakeHead.x = snakeHead.x - snakeHead.width
-            if(snakeHead.x < 0 )
-                snakeHead.x  = Math.floor(root.width / snakeHead.width) * snakeHead.width - snakeHead.width
-        }
-    }
-
     Keys.onPressed: {
 
         if(event.key === Qt.Key_Up && direction !== directionDown) {
@@ -60,7 +37,17 @@ Item {
             else
                 timer.start()
 
-      //      SnakeLogic.deletePiece()
+            SnakeLogic.deletePiece()
+        }
+        if(event.key === Qt.Key_H)
+        {
+            SnakeLogic.replase()
+            // SnakeLogic.restartGame();
+        }
+        if(event.key === Qt.Key_G)
+        {
+          //  SnakeLogic.replase()
+             SnakeLogic.restartGame();
         }
     }
 
@@ -71,7 +58,7 @@ Item {
         repeat: true
 
         onTriggered: {
-            onTimerDirection()
+            SnakeLogic.onTimerDirection()
             SnakeLogic.foundsItem()
 
         }
