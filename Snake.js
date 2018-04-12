@@ -124,22 +124,25 @@ function replase()
         direction = directionLeft
 }
 
-function movement (value){
+function control (value){
 
     switch(value)
     {
     case directionUp:
+        if(direction !== directionDown)
             direction = directionUp
         break;
     case directionDown:
+        if(direction !== directionUp)
             direction = directionDown
         break;
-    case directionRight:
-            direction = directionRight
-            break;
     case directionLeft:
+        if(direction !== directionRight)
             direction = directionLeft
-            break;
+        break;
+    case directionRight:
+        if(direction !== directionLeft)
+            direction = directionRight
+        break;
     }
 }
-

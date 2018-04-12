@@ -79,7 +79,7 @@ function gameLogic(contextObj)
         console.log(contextObj.scoresText)
         console.log(level)
     }
-    if(level === 5)
+    if(level === 7)
     {
         contextObj.scoresText  = "You win this game"
         contextObj.timerInterval = 0

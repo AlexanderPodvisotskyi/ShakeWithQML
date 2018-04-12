@@ -6,8 +6,8 @@ Item {
     id: snake
 
     property int score: 0
-    property int direction: 0
 
+    property int direction: 0
     readonly property int directionUp: 1
     readonly property int directionDown: 2
     readonly property int directionLeft: 3
@@ -19,17 +19,28 @@ Item {
     Keys.onPressed:{
 
         if(event.key === Qt.Key_Up){
-            SnakeLogic.movement(directionUp)
+            direction = directionUp
         }
-        if(event.key === Qt.Key_DOWN){
-            SnakeLogic.movement(directionDown)
+        if(event.key === Qt.Key_Down){
+            direction = directionDown
         }
-        if(event.key === Qt.Key_LEFT){
-            SnakeLogic.movement(directionLeft)
+        if(event.key === Qt.Key_Left){
+            direction = directionLeft
         }
-        if(event.key === Qt.Key_RIGHT){
-            SnakeLogic.movement(directionDown)
+        if(event.key === Qt.Key_Right){
+            direction = directionRight
         }
+        if(event.key === Qt.Key_G){
+            SnakeLogic.restartGame()
+        }
+        if(event.key === Qt.Key_Alt)
+        {
+            if(timer.running)
+                timer.stop();
+            else
+                timer.start();
+        }
+        SnakeLogic.control(direction)
     }
 
     Timer {
@@ -41,7 +52,6 @@ Item {
         onTriggered: {
             SnakeLogic.onTimerDirection()
             SnakeLogic.foundsItem()
-
         }
     }
     Text {
