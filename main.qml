@@ -12,7 +12,7 @@ ApplicationWindow {
     GameGround {
         id: gameGroundMain
 
-        height: root.height
-        width: root.width
+        height: parent.height
+        width: parent.width
     }
 }

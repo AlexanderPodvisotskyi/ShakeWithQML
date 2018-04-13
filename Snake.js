@@ -4,6 +4,12 @@
 var head = null
 var tail = null
 
+var  direction      =  0
+var  directionUp    =  1
+var  directionDown  =  2
+var  directionLeft  =  3
+var  directionRight =  4
+
 // add Piece to Snake
 function addPiece()
 {
@@ -74,30 +80,6 @@ function restartGame()
     }
 }
 
-function onTimerDirection()
-{
-    if (direction === directionUp){
-        head.y = head.y - head.height
-        if(head.y < 0)
-            head.y = Math.floor(GameGroundLogic.mainGameGround.height / head.height) * head.height - head.height
-    }
-    else  if (direction === directionDown){
-        head.y = head.y + head.height
-        if(head.y > Math.floor(GameGroundLogic.mainGameGround.height / head.height) * head.height - head.height)
-            head.y = 0
-    }
-    else  if (direction === directionRight){
-        head.x = head.x + head.width
-        if(head.x > Math.floor(GameGroundLogic.mainGameGround.width / head.width) * head.width - head.width)
-            head.x = 0
-    }
-    else  if (direction === directionLeft){
-        head.x = head.x - head.width
-        if(head.x < 0 )
-            head.x  = Math.floor(GameGroundLogic.mainGameGround.width / head.width) * head.width - head.width
-    }
-}
-
 function replase()
 {
     var prevLast = head
@@ -124,25 +106,57 @@ function replase()
         direction = directionLeft
 }
 
-function control (value){
+function control (event){
 
-    switch(value)
+
+    switch(event)
     {
-    case directionUp:
+    case Qt.Key_Up:
         if(direction !== directionDown)
             direction = directionUp
         break;
-    case directionDown:
+    case Qt.Key_Down:
         if(direction !== directionUp)
             direction = directionDown
         break;
-    case directionLeft:
+    case Qt.Key_Left:
         if(direction !== directionRight)
             direction = directionLeft
         break;
-    case directionRight:
+    case Qt.Key_Right:
         if(direction !== directionLeft)
             direction = directionRight
         break;
+    case Qt.Key_G:
+        restartGame()
+        break;
+    case Qt.Key_H:
+        replase()
+        break;
+    }
+
+}
+
+function timeDirection()
+{
+    if (direction === directionUp){
+        head.y = head.y - head.height
+        if(head.y < 0)
+            head.y = Math.floor(GameGroundLogic.mainGameGround.height / head.height) * head.height - head.height
+    }
+    else  if (direction === directionDown){
+        head.y = head.y + head.height
+        if(head.y > Math.floor(GameGroundLogic.mainGameGround.height / head.height) * head.height - head.height)
+            head.y = 0
+    }
+    else  if (direction === directionRight){
+        head.x = head.x + head.width
+        if(head.x > Math.floor(GameGroundLogic.mainGameGround.width / head.width) * head.width - head.width)
+            head.x = 0
+    }
+    else  if (direction === directionLeft){
+        head.x = head.x - head.width
+        if(head.x < 0 )
+            head.x  = Math.floor(GameGroundLogic.mainGameGround.width / head.width) * head.width - head.width
     }
 }
