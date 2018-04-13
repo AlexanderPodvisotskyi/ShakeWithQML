@@ -133,6 +133,11 @@ function control (event){
     case Qt.Key_H:
         replase()
         break;
+    case Qt.Key_Alt:
+        if(timer.running)
+            timer.stop();
+        else
+            timer.start();
     }
 
 }
