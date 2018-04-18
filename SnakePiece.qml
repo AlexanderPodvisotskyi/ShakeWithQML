@@ -3,6 +3,7 @@ import QtQuick 2.9
 Rectangle {
 
     property Rectangle next: null
+    property Rectangle prev: null
 
     property int prevX: 0
     property int prevY: 0

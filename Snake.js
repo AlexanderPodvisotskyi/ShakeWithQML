@@ -20,6 +20,7 @@ function addPiece()
         newPiece.y = tail.y
 
         tail.next = newPiece
+        newPiece.prev = tail
         tail = tail.next
 
         GameGroundLogic.listElement.push(newPiece)
@@ -29,7 +30,7 @@ function addPiece()
 
 function foundsItem()
 {
-    var founds  = GameGroundLogic.collision(snakeHead)
+    var founds  = GameGroundLogic.collision(head)
 
     for (var indexFounds = 0; indexFounds < founds.length; indexFounds++) {
         if(GameGroundLogic.listFruit.indexOf(founds[indexFounds]) !== -1) {
@@ -52,15 +53,15 @@ function deletePiece(){
     if(tail === head)
         return;
 
-    var tmp = head
-    while(tmp.next && tmp.next !== tail)
-        tmp = tmp.next
-
-    if(tmp === null)
-        return;
-
-    tail.destroy()
     GameGroundLogic.listElement.splice(GameGroundLogic.listElement.indexOf(tail),1)
+
+    var tmp;
+
+    tmp = tail.prev
+    tail.destroy()
+    tail = tmp
+    tmp.next = null;
+
 
     tail = tmp
 }
@@ -82,19 +83,19 @@ function restartGame()
 
 function replase()
 {
-    var prevLast = head
-    while(prevLast.next && prevLast.next !== tail)
-        prevLast = prevLast.next
-
-    if(prevLast === null)
-        return;
 
     var temp = head
     head = tail
-    head.next = temp.next
     tail = temp
-    tail.next = null
-    prevLast.next = tail
+    var p = head
+
+    while(p !== null)
+    {
+        temp = p.next
+        p.next = p.prev
+        p.prev = temp
+        p = p.next
+    }
 
     if(direction === directionUp)
         direction = directionDown

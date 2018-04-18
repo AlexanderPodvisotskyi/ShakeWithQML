@@ -4,7 +4,6 @@ import "qrc:/JavaScript/Snake.js" as SnakeLogic
 
 Rectangle {
     id: gameGround
-
     z: -1
 
     Component.onCompleted: {
